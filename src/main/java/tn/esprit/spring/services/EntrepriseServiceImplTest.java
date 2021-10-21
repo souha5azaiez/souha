@@ -151,7 +151,7 @@ public class EntrepriseServiceImplTest {
 				l.info("testSupprimerEntreprise:");
 				l.info("création");
 				Entreprise E=new Entreprise("entreprise ", "souha");
-				l.info("ajout ");
+				l.info("l'ajout ");
 				int id_entreprise=service.ajouterEntreprise(E);
 				l.info("supprimer");
 				service.deleteEntrepriseById(id_entreprise);
