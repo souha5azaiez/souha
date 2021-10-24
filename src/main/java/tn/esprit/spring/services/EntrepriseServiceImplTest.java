@@ -2,11 +2,9 @@ package tn.esprit.spring.services;
 
 import static org.junit.Assert.*;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.slf4j.Logger;
@@ -96,7 +94,7 @@ public class EntrepriseServiceImplTest {
 		
 		
 		@Test
-		public void AjouterDepartement()
+		public void ajouterdepartement1()
 		{
 			try {
 				l.info(" testAjouterDepart :");
