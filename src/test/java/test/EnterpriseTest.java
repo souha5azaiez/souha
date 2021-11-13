@@ -1,10 +1,12 @@
-package tn.esprit.spring.services;
+package test;
 
 import static org.junit.Assert.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.slf4j.Logger;
@@ -15,20 +17,21 @@ import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.repository.DepartementRepository;
 import tn.esprit.spring.repository.EntrepriseRepository;
+import tn.esprit.spring.services.IEntrepriseService;
 
-public class EntrepriseServiceImplTest {
+public class EnterpriseTest {
 
 	@Mock
 	EntrepriseRepository entrepriseRepoistory;
 	
-	 Logger l = LoggerFactory.getLogger(EntrepriseServiceImplTest.class);
+	 Logger l = LoggerFactory.getLogger(EnterpriseTest.class);
 	
 		
 
 
 	
 	// create  entreprise test  ajoutTest
-	
+	/*
 	 @Test
 	    public void createEmployeeTest()
 	    {
@@ -45,7 +48,7 @@ public class EntrepriseServiceImplTest {
 	    
 	
 	 @Test
-	    public void getEmployeeTest()
+	     public void getEmployeeTest()
 	    {
 		
 	List<Entreprise> ent = (List<Entreprise>)	entrepriseRepoistory.findAll();
@@ -56,7 +59,7 @@ public class EntrepriseServiceImplTest {
 		 
 	    }
 	    
-	
+	*/
 	 @Autowired
 		IEntrepriseService service;
 		
@@ -72,29 +75,29 @@ public class EntrepriseServiceImplTest {
 		@Test
 		public void AjouterEntreprise()
 		{
-			try {
+		  try {
 				
-				Entreprise E=new Entreprise("entreprise1", "souha");
-				ArrayList <Entreprise> liste1 =(ArrayList<Entreprise>) repoistory.findAll();
-				int size1=liste1.size();
-				l.info("nb d'entreprises avant l'ajout: " + size1);
-				l.info("ajouter entreprise.");
-				int id=service.ajouterEntreprise(E);
-				ArrayList <Entreprise> liste2 =(ArrayList<Entreprise>) repoistory.findAll();
-				int size2=liste2.size();
-				l.info("nb d'entreprises apres l'ajout: " + size2);
-				l.info("comparaison size");
-				assertTrue(size2==size1+1);
-				service.deleteEntrepriseById(id);
-				l.info("supprimer entreprise.");
-				l.info(" test sans erreurs.");
-			}catch (Exception e) { l.error("Erreur : " + e); }
+			Entreprise E=new Entreprise("entreprise1", "souha");
+			ArrayList <Entreprise> liste1 =(ArrayList<Entreprise>) repoistory.findAll();
+			int size1=liste1.size();
+			l.info("nb d'entreprises avant l'ajout: " + size1);
+			l.info("ajouter entreprise.");
+			int id=service.ajouterEntreprise(E);
+			ArrayList <Entreprise> liste2 =(ArrayList<Entreprise>) repoistory.findAll();
+			int size2=liste2.size();
+			l.info("nb d'entreprises apres l'ajout: " + size2);
+			l.info("comparaison size");
+			assertTrue(size2==size1+1);
+			service.deleteEntrepriseById(id);
+			l.info("supprimer entreprise.");
+			l.info(" test sans erreurs.");
+		   }catch (Exception e) { l.error("Erreur : " + e); }
 		}
 		
 		
 		
 		@Test
-		public void ajouterdepartement1()
+		public void AjouterDepartement()
 		{
 			try {
 				l.info(" testAjouterDepart :");
@@ -145,17 +148,17 @@ public class EntrepriseServiceImplTest {
 		@Test
 		public void testSupprimerEntreprise()
 		{
-			try{
-				l.info("testSupprimerEntreprise:");
-				l.info("création");
-				Entreprise E=new Entreprise("entreprise ", "souha");
-				l.info("l'ajout ");
-				int id_entreprise=service.ajouterEntreprise(E);
-				l.info("supprimer");
-				service.deleteEntrepriseById(id_entreprise);
-				assertNull(service.getEntrepriseById(id_entreprise));
-				l.info("testSupprimerEntreprise sans erreurs.");
-			}catch (Exception e) { l.error("Erreur : " + e); }
+		    try{
+			l.info("testSupprimerEntreprise:");
+			l.info("création");
+			Entreprise E=new Entreprise("entreprise ", "souha");
+			l.info("ajout ");
+			int id_entreprise=service.ajouterEntreprise(E);
+			l.info("supprimer");
+			service.deleteEntrepriseById(id_entreprise);
+			assertNull(service.getEntrepriseById(id_entreprise));
+			l.info("testSupprimerEntreprise sans erreurs.");
+		  }catch (Exception e) { l.error("Erreur : " + e); }
 		}
 		
 		
@@ -179,6 +182,3 @@ public class EntrepriseServiceImplTest {
 			}catch (Exception e) { l.error("Erreur : " + e); }
 		}
 	}
-
-	
-
